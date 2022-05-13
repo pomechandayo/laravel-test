@@ -1,0 +1,17 @@
+postgres-data
+apache
+php
+src/node_modules
+src/public/hot
+src/public/storage
+src/storage/*.key
+src/vendor
+.env
+src/.phpunit.result.cache
+src/npm-debug.log
+
+src/*.log
+src/*.sqlite
+src/public/.htaccess
+src/storage
+src/config

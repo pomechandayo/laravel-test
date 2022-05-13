@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres
+    container_name: laravel_test_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: laravel_test
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+  php-apache:
+    container_name: laravel_test_app
+    build:
+      context: ./php
+    ports:
+        - '8111:80'
+    volumes:
+      - ./src:/var/www/laravel_test
+      - ./apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
+    depends_on:
+      - database
